@@ -1052,6 +1052,9 @@ body {
     margin-top: 1rem;
   }
 }
+.bold-text {
+  font-weight: bold;
+}
 
 
 

@@ -1,37 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import heroBanner1 from "../assets/images/hero-banner-1.jpg";
-import heroBanner2 from "../assets/images/hero-banner-2.jpg";
-import heroShape from "../assets/images/hero-shape.png";
-import featureBanner from "../assets/images/feature-banner.jpg";
 import playIcon from "../assets/images/play.svg";
 import featureIcon1 from "../assets/images/feature-icon-1.svg";
 import featureIcon2 from "../assets/images/feature-icon-2.svg";
 import featureIcon3 from "../assets/images/feature-icon-3.svg";
 
 const Home = () => {
-  const features = [
-    {
-      icon: featureIcon1,
-      alt: "wildlife protection icon",
-      title: "Sustainable Safaris",
-      description:
-        "Eco-friendly experiences that preserve wildlife and protect the natural beauty of Africa.",
-    },
-    {
-      icon: featureIcon2,
-      alt: "local guides icon",
-      title: "Expert Local Guides",
-      description:
-        "Discover hidden gems and iconic landscapes with experienced guides who know every corner of the wild.",
-    },
-    {
-      icon: featureIcon3,
-      alt: "luxury camping icon",
-      title: "Luxury in the Wild",
-      description:
-        "Enjoy the perfect blend of adventure and comfort with our handpicked safari lodges and camps.",
-    },
-  ];
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("https://horchenafrica.pythonanywhere.com/api/homepage/")
+      .then((response) => response.json())
+      .then((result) => setData(result[0])) // Assuming the API returns an array
+      .catch(() => setData(null)); // Ensure no data is displayed if fetching fails
+  }, []);
+
+  if (!data) return null; // Page remains blank if no data is available
 
   return (
     <>
@@ -39,15 +23,24 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <h1 className="h1 hero-title">
-              Discover <span className="span">Safari Wonders</span> with Horchen
-              Africa
+              {(() => {
+                const words = data.hero_title.split(" ");
+                if (words.length < 4) return data.hero_title; // If the title is too short, return it as is.
+
+                return (
+                  <>
+                    {words[0]} {/* First word (not wrapped) */}
+                    <span className="span">
+                      {words.slice(1, words.length - 1).join(" ")}
+                    </span>
+                    {` ${words[words.length - 1]}`}{" "}
+                    {/* Last word (not wrapped) */}
+                  </>
+                );
+              })()}
             </h1>
-            <p className="section-text">
-              Experience breathtaking landscapes, luxury safari lodges, and
-              unforgettable wildlife adventures. Horchen Africa brings you
-              closer to nature with eco-friendly and immersive safari
-              experiences.
-            </p>
+
+            <p className="section-text">{data.hero_subtitle}</p>
             <Link
               to="/packages"
               className="btn"
@@ -63,7 +56,7 @@ const Home = () => {
               style={{ "--width": 400, "--height": 550 }}
             >
               <img
-                src={heroBanner1}
+                src={data.hero_image1}
                 width="400"
                 height="550"
                 alt="Luxury safari lodge with African landscape"
@@ -75,20 +68,13 @@ const Home = () => {
               style={{ "--width": 500, "--height": 850 }}
             >
               <img
-                src={heroBanner2}
+                src={data.hero_image2}
                 width="500"
                 height="850"
                 alt="Wildlife safari scene with elephants and savannah"
                 className="img-cover"
               />
             </div>
-            <img
-              src={heroShape}
-              width="570"
-              height="676"
-              alt="African tribal pattern decoration"
-              className="shape"
-            />
           </div>
         </div>
       </section>
@@ -96,7 +82,9 @@ const Home = () => {
       <section className="feature" aria-label="features">
         <div
           className="feature-banner has-bg-image has-after"
-          style={{ backgroundImage: `url(${featureBanner})` }}
+          style={{
+            backgroundImage: data ? `url(${data.feature_background})` : "none",
+          }}
         >
           <button
             className="play-btn"
@@ -114,16 +102,31 @@ const Home = () => {
 
         <div className="section feature-content">
           <div className="container">
-            <h2 className="h2 section-title">
-              Experience the Wild Like Never Before
-            </h2>
-            <p className="section-text">
-              Journey through breathtaking landscapes, encounter majestic
-              wildlife, and immerse yourself in the heart of Africa’s
-              wilderness.
-            </p>
+            <h2 className="h2 section-title">{data?.feature_title}</h2>
+
+            {/* First extra paragraph (before feature list) */}
+            {data?.extra_paragraph1 && (
+              <p className="section-text">{data.extra_paragraph1}</p>
+            )}
+
             <ul className="feature-list">
-              {features.map((feature, index) => (
+              {[
+                {
+                  icon: featureIcon1,
+                  title: data?.feature1_title,
+                  description: data?.feature1_description,
+                },
+                {
+                  icon: featureIcon2,
+                  title: data?.feature2_title,
+                  description: data?.feature2_description,
+                },
+                {
+                  icon: featureIcon3,
+                  title: data?.feature3_title,
+                  description: data?.feature3_description,
+                },
+              ].map((feature, index) => (
                 <li key={index}>
                   <div className="feature-list-card">
                     <div className="card-icon">
@@ -132,21 +135,25 @@ const Home = () => {
                         width="45"
                         height="45"
                         loading="lazy"
-                        alt={feature.alt}
+                        alt="feature icon"
                       />
                     </div>
                     <div>
                       <h3 className="h4 card-title">{feature.title}</h3>
-                      <p className="card-text">{feature.description}</p>
+                      <p className="card-description">
+                        {feature.description}
+                      </p>{" "}
+                      {/* Added description */}
                     </div>
                   </div>
                 </li>
               ))}
             </ul>
-            <p>
-              From thrilling game drives to tranquil sunset safaris, Horchen
-              Africa ensures an unforgettable adventure in the wild.
-            </p>
+
+            {/* Second extra paragraph (after feature list) */}
+            {data?.extra_paragraph2 && (
+              <p className="section-text">{data.extra_paragraph2}</p>
+            )}
           </div>
         </div>
       </section>

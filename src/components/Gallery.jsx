@@ -1,35 +1,14 @@
-import blog1 from "../assets/images/blog-1.jpg";
-import blog2 from "../assets/images/blog-2.jpg";
-import blog3 from "../assets/images/blog-3.jpg";
-import blog4 from "../assets/images/blog-4.jpg";
+import { useState, useEffect } from "react";
 
 const Gallery = () => {
-  const galleryItems = [
-    {
-      title: "Exploring Africa's Hidden Safari Gems",
-      image: blog1,
-      alt: "Exploring Africa's Hidden Safari Gems",
-      date: "October 12, 2022",
-    },
-    {
-      title: "The Ultimate Guide to the Great Migration",
-      image: blog2,
-      alt: "The Ultimate Guide to the Great Migration",
-      date: "November 5, 2022",
-    },
-    {
-      title: "Top 5 Safari Lodges for a Luxury Experience",
-      image: blog3,
-      alt: "Top 5 Safari Lodges for a Luxury Experience",
-      date: "December 18, 2022",
-    },
-    {
-      title: "Essential Safari Tips for First-Time Travelers",
-      image: blog4,
-      alt: "Essential Safari Tips for First-Time Travelers",
-      date: "January 8, 2023",
-    },
-  ];
+  const [galleryItems, setGalleryItems] = useState([]);
+
+  useEffect(() => {
+    fetch("https://horchenafrica.pythonanywhere.com/api/gallery/")
+      .then((response) => response.json())
+      .then((data) => setGalleryItems(data))
+      .catch((error) => console.error("Error fetching gallery data:", error));
+  }, []);
 
   return (
     <section
@@ -46,39 +25,46 @@ const Gallery = () => {
           A collection of breathtaking safari moments and wildlife encounters.
         </p>
 
-        <ul className="grid-list">
-          {galleryItems.map((item, index) => (
-            <li key={index}>
-              <div className="blog-card">
-                <figure
-                  className="card-banner img-holder"
-                  style={{ "--width": 1024, "--height": 683 }}
-                >
-                  <img
-                    src={item.image}
-                    width="1024"
-                    height="683"
-                    loading="lazy"
-                    alt={item.alt}
-                    className="img-cover"
-                  />
-                </figure>
+        {galleryItems.length > 0 ? (
+          <ul className="grid-list">
+            {galleryItems.map((item) => (
+              <li key={item.id}>
+                <div className="blog-card">
+                  <figure
+                    className="card-banner img-holder"
+                    style={{ "--width": 1024, "--height": 683 }}
+                  >
+                    <img
+                      src={item.image}
+                      width="1024"
+                      height="683"
+                      loading="lazy"
+                      alt={item.caption}
+                      className="img-cover"
+                    />
+                  </figure>
 
-                <div className="card-content">
-                  <h3 className="h4">{item.title}</h3>
+                  <div className="card-content">
+                    <time
+                      className="card-meta-wrapper bold-text"
+                      dateTime={item.date_posted}
+                    >
+                      <ion-icon
+                        name="calendar-clear-outline"
+                        aria-hidden="true"
+                      ></ion-icon>
+                      <span className="span">
+                        {new Date(item.date_posted).toDateString()}
+                      </span>
+                    </time>
 
-                  <time className="card-meta-wrapper" dateTime={item.date}>
-                    <ion-icon
-                      name="calendar-clear-outline"
-                      aria-hidden="true"
-                    ></ion-icon>
-                    <span className="span">{item.date}</span>
-                  </time>
+                    <p className="caption bold-text">{item.caption}</p>
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     </section>
   );
