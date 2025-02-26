@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 import quoteIcon from "../assets/images/quote.svg"; // Import the image
 
 const Testimonial = () => {
   return (
     <section className="section testi" aria-label="client testimonials">
-      <div className="container">
+      <div className="container" style={{ paddingTop: "20px" }}>
         <div className="testi-card">
           <p className="card-text">
             "The architectural design exceeded my expectations! The precision,

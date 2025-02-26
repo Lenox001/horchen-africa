@@ -9,8 +9,12 @@ import {
 
 const Contact = () => {
   return (
-    <section className="contact-section" id="contact">
-      <div className="contact-container">
+    <section
+      className="contact-section"
+      id="contact"
+      style={{ paddingTop: "120px" }}
+    >
+      <div className="contact-container" style={{ marginTop: "20px" }}>
         <h2 className="contact-title">Plan Your Safari Adventure</h2>
 
         <p className="contact-description">
@@ -85,7 +89,6 @@ const Contact = () => {
 
         {/* Social Media Links */}
         <div className="social-links">
-          
           <a
             href="https://instagram.com"
             target="_blank"

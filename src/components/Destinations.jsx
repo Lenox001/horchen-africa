@@ -38,7 +38,7 @@ const Destinations = () => {
       className="section collection text-center"
       aria-labelledby="collection-label"
     >
-      <div className="container">
+      <div className="container" style={{ paddingTop: "20px" }}>
         <h2 className="h2 section-title" id="collection-label">
           Discover Africa’s Finest Safari Destinations
         </h2>

@@ -91,7 +91,7 @@ const DestinationDetail = () => {
       className="section collection text-center"
       aria-labelledby="destination-label"
     >
-      <div className="container">
+      <div className="container" style={{ paddingTop: "20px" }}>
         <h2 className="h2 section-title" id="destination-label">
           {destination.title}
         </h2>

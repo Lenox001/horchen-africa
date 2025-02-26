@@ -37,7 +37,7 @@ const Gallery = () => {
       aria-labelledby="gallery-label"
       id="gallery"
     >
-      <div className="container">
+      <div className="container" style={{ paddingTop: "20px" }}>
         <h2 className="h2 section-title text-center" id="gallery-label">
           Safari Gallery
         </h2>
