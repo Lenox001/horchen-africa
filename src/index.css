@@ -1063,7 +1063,7 @@ body {
   right: -100%; /* Hidden off-screen */
   width: 250px;
   height: 100vh;
-  background: white;
+  background:wheat;
   display: flex;
   flex-direction: column;
   align-items: center;
