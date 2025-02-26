@@ -41,7 +41,7 @@ const SafariDetail = () => {
 
   return (
     <section className="section collection text-center" id="safari-detail">
-      <div className="container">
+      <div className="container" style={{ paddingTop: "6rem" }}>
         <h2 className="h2 section-title">{safari.title}</h2>
         <p className="section-text">{safari.description}</p>
 

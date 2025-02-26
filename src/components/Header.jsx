@@ -22,12 +22,18 @@ const Header = () => {
         <Link
           to="/"
           className="logo"
-          style={{ display: "flex", alignItems: "center", gap: "10px" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            justifyContent: "flex-start", // Aligns to the left
+            marginLeft: "0", // Ensures it's at the very left
+          }}
         >
           <img
             src={Logo}
             alt="Horchen Africa Logo"
-            style={{ width: "100px", height: "100px" }} // Increased size
+            style={{ width: "100px", height: "100px" }}
           />
           Horchen Africa
         </Link>
@@ -79,7 +85,7 @@ const Header = () => {
                 className="navbar-link"
                 onClick={() => setIsNavOpen(false)}
               >
-                About Us
+                About
               </Link>
             </li>
             <li>
@@ -97,7 +103,16 @@ const Header = () => {
                 className="navbar-link"
                 onClick={() => setIsNavOpen(false)}
               >
-                Contact Us
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/packages"
+                className="navbar-link"
+                onClick={() => setIsNavOpen(false)}
+              >
+                Packages
               </Link>
             </li>
           </ul>
