@@ -4,16 +4,16 @@ import quoteIcon from "../assets/images/quote.svg"; // Import the image
 const Testimonial = () => {
   return (
     <section className="section testi" aria-label="client testimonials">
-      <div className="container" style={{ paddingTop: "20px" }}>
+      <div className="container" style={{ paddingTop: "60px" }}>
         <div className="testi-card">
           <p className="card-text">
-            "The architectural design exceeded my expectations! The precision,
-            creativity, and functionality in every detail truly brought my
-            vision to life. Highly recommended!"
+            "My safari experience was absolutely incredible! The breathtaking
+            landscapes, close-up wildlife encounters, and seamless organization
+            made it an unforgettable adventure. Highly recommended!"
           </p>
 
           <p className="client-name">Edward</p>
-          <p className="client-title">Architectural Project Client</p>
+          <p className="client-title">Safari Enthusiast</p>
 
           <img
             src={quoteIcon} // Use the imported image
