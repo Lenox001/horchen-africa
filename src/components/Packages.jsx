@@ -37,7 +37,13 @@ const Packages = () => {
                 <h3 className="h3 card-title">{item.title}</h3>
 
                 {/* ✅ Updated Link to pass unique ID */}
-                <Link to={`/safari-detail/${index}`} className="btn-link">
+                <Link
+                  to={`/safari-detail/${index}`}
+                  className="btn"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
                   <span className="span">View More</span>
                   <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
                 </Link>

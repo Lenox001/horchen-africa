@@ -48,7 +48,11 @@ const Home = () => {
               closer to nature with eco-friendly and immersive safari
               experiences.
             </p>
-            <Link to="/packages" className="btn">
+            <Link
+              to="/packages"
+              className="btn"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
               <span className="span">Explore Our Safaris</span>
               <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
             </Link>

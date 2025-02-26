@@ -6,7 +6,7 @@ import aboutImg3 from "../assets/images/about-3.jpg";
 const About = () => {
   return (
     <section className="section about" aria-label="about" id="about">
-      <div className="container">
+      <div className="container" style={{ paddingTop: "40px" }}>
         <div className="wrapper">
           <figure
             className="about-banner about-banner-1 img-holder"
@@ -51,7 +51,11 @@ const About = () => {
             journeys tailored just for you.
           </p>
 
-          <Link to="/packages" className="btn">
+          <Link
+            to="/packages"
+            className="btn"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             <span className="span">Explore Our Safaris</span>
             <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
           </Link>

@@ -74,7 +74,11 @@ const SafariDetail = () => {
             marginTop: "4rem",
           }}
         >
-          <Link to="/packages" className="btn">
+          <Link
+            to="/packages"
+            className="btn"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             <span className="span">Back to Safaris</span>
             <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
           </Link>

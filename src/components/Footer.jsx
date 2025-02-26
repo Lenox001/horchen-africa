@@ -65,7 +65,11 @@ const Footer = () => {
               nature like never before. Let’s make your dream safari a reality.
             </p>
 
-            <Link to="/contact" className="btn">
+            <Link
+              to="/contact"
+              className="btn"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
               <span className="span">Contact Us</span>
               <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
             </Link>

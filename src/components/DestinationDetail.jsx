@@ -127,7 +127,11 @@ const DestinationDetail = () => {
             marginTop: "2rem",
           }}
         >
-          <Link to="/destinations" className="btn">
+          <Link
+            to="/destinations"
+            className="btn"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             <span className="span">Back to Destinations</span>
             <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
           </Link>

@@ -70,7 +70,13 @@ const Destinations = () => {
                   <h3 className="h3 card-title">{item.title}</h3>
                   <p className="card-text">{item.description}</p>
 
-                  <Link to={`/destinations/${item.id}`} className="btn">
+                  <Link
+                    to={`/destinations/${item.id}`}
+                    className="btn"
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                  >
                     <span className="span">More Info</span>
                     <ion-icon
                       name="arrow-forward"
@@ -90,7 +96,11 @@ const Destinations = () => {
             marginTop: "2rem",
           }}
         >
-          <Link to="/testimonial" className="btn">
+          <Link
+            to="/testimonial"
+            className="btn"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             <span className="span">See Reviews</span>
             <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
           </Link>
