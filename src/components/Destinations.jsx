@@ -37,7 +37,7 @@ const Destinations = () => {
         backgroundColor: "#121212",
         color: "#e0e0e0",
         padding: "20px 0",
-        marginTop:"10rem"
+        marginTop:"4rem"
       }} // Dark theme
     >
       <div className="container" style={{ paddingTop: "20px" }}>

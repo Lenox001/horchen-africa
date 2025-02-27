@@ -21,51 +21,120 @@ const Header = () => {
   };
 
   return (
-    <header className={`header ${isScrolled ? "active" : ""}`}>
-      <div className="container">
+    <header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+        backgroundColor: isScrolled ? "#ffffff" : "transparent",
+        transition: "background-color 0.3s ease, height 0.3s ease",
+        boxShadow: isScrolled ? "0 2px 10px rgba(0, 0, 0, 0.1)" : "none",
+        height: "80px", // Keep height fixed
+        overflow: "hidden", // Prevent content from increasing height
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 20px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: "100%", // Match the header height
+        }}
+      >
         <Link
           to="/"
-          className="logo"
           style={{
             display: "flex",
             alignItems: "center",
             gap: "10px",
-            justifyContent: "flex-start",
-            marginLeft: "0",
+            textDecoration: "none",
+            color: "#333",
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "24px",
+            fontWeight: "bold",
           }}
           onClick={handleLinkClick}
         >
           <img
             src={Logo}
             alt="Horchen Africa Logo"
-            style={{ width: "100px", height: "100px" }}
+            style={{ width: "80px", height: "80px", borderRadius: "50%" }}
           />
           Horchen Africa
         </Link>
 
         {/* Hamburger Button */}
         <button
-          className={`nav-open-btn ${isNavOpen ? "hidden" : ""}`}
-          onClick={() => setIsNavOpen(true)}
-          aria-label="Open menu"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            width: "30px",
+            height: "24px",
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            zIndex: 1001,
+          }}
+          onClick={() => setIsNavOpen(!isNavOpen)}
         >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
+          <span
+            style={{
+              width: "100%",
+              height: "3px",
+              backgroundColor: "#333",
+              transform: isNavOpen
+                ? "rotate(45deg) translate(5px, 5px)"
+                : "none",
+              transition: "transform 0.3s ease",
+            }}
+          ></span>
+          <span
+            style={{
+              width: "100%",
+              height: "3px",
+              backgroundColor: "#333",
+              opacity: isNavOpen ? 0 : 1,
+              transition: "opacity 0.3s ease",
+            }}
+          ></span>
+          <span
+            style={{
+              width: "100%",
+              height: "3px",
+              backgroundColor: "#333",
+              transform: isNavOpen
+                ? "rotate(-45deg) translate(5px, -5px)"
+                : "none",
+              transition: "transform 0.3s ease",
+            }}
+          ></span>
         </button>
 
         {/* Side Navbar */}
-        <nav className={`navbar ${isNavOpen ? "active" : ""}`}>
-          {/* Close Button */}
-          <button
-            className="nav-close-btn"
-            onClick={() => setIsNavOpen(false)}
-            aria-label="Close menu"
+        <nav
+          style={{
+            position: "fixed",
+            top: 0,
+            right: isNavOpen ? "0" : "-100%",
+            width: "250px",
+            height: "100vh",
+            backgroundColor: "#ffffff",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+            transition: "right 0.3s ease",
+            zIndex: 1000,
+          }}
+        >
+          <ul
+            style={{
+              listStyle: "none",
+              padding: "40px 20px 20px",
+              margin: 0,
+            }}
           >
-            &times;
-          </button>
-
-          <ul className="navbar-list">
             {[
               { path: "/", label: "Home" },
               { path: "/destinations", label: "Destinations" },
@@ -74,10 +143,17 @@ const Header = () => {
               { path: "/contact", label: "Contact" },
               { path: "/packages", label: "Packages" },
             ].map(({ path, label }) => (
-              <li key={path}>
+              <li key={path} style={{ marginBottom: "15px" }}>
                 <Link
                   to={path}
-                  className="navbar-link"
+                  style={{
+                    textDecoration: "none",
+                    color: "#333",
+                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: "18px",
+                    fontWeight: "500",
+                    transition: "color 0.3s ease",
+                  }}
                   onClick={handleLinkClick}
                 >
                   {label}
@@ -88,10 +164,20 @@ const Header = () => {
         </nav>
 
         {/* Overlay */}
-        <div
-          className={`overlay ${isNavOpen ? "active" : ""}`}
-          onClick={() => setIsNavOpen(false)}
-        ></div>
+        {isNavOpen && (
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              zIndex: 999,
+            }}
+            onClick={() => setIsNavOpen(false)}
+          ></div>
+        )}
       </div>
     </header>
   );
