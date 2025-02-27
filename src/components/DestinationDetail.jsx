@@ -40,6 +40,7 @@ const DestinationDetail = () => {
         <h2>Loading...</h2>
       </motion.div>
     );
+
   if (error)
     return (
       <motion.div
@@ -51,6 +52,7 @@ const DestinationDetail = () => {
         <h2>{error}</h2>
       </motion.div>
     );
+
   if (!destination)
     return (
       <motion.div
@@ -68,107 +70,84 @@ const DestinationDetail = () => {
     : [];
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+    <div
       style={{
-        textAlign: "center",
-        padding: "30px 20px",
-        maxWidth: "800px", // Reduced card size
-        margin: "0 auto",
-        marginTop: "15rem",
-        marginBottom: "2rem", // Margin top set to 9rem
-        backgroundColor: "#1a1a1a",
-        color: "#f0f0f0",
-        borderRadius: "12px",
-        boxShadow:
-          "0 0 15px rgba(255, 165, 0, 0.6), 0 0 25px rgba(255, 165, 0, 0.4), 0 0 35px rgba(255, 165, 0, 0.2)", // Glowing orange border
-        border: "2px solid rgba(255, 165, 0, 0.5)", // Orange border
+        backgroundColor: "black",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "50px 0",
       }}
-      aria-labelledby="destination-label"
     >
-      <h2
-        id="destination-label"
-        style={{
-          fontSize: "2.5rem", // Slightly smaller font size
-          fontWeight: "bold",
-          color: "#f0f0f0",
-          marginBottom: "1.5rem",
-          textAlign: "left",
-          padding: "0 20px",
-        }}
-      >
-        {destination.title}
-      </h2>
-
-      <p
-        style={{
-          fontSize: "1.2rem", // Smaller font size
-          color: "#f0f0f0",
-          lineHeight: "1.6",
-          marginBottom: "2rem",
-          textAlign: "left",
-          padding: "0 20px",
-        }}
-      >
-        <strong>Description:</strong> {destination.description}
-      </p>
-
-      {featuresList.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          style={{
-            fontSize: "1.2rem", // Smaller font size
-            color: "#f0f0f0",
-            marginBottom: "2rem",
-            textAlign: "left",
-            padding: "0 20px",
-          }}
-        >
-          <strong>Features:</strong>
-          <ul
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: "10px 0",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "flex-start",
-              gap: "10px",
-            }}
-          >
-            {featuresList.map((feature, index) => (
-              <li
-                key={index}
-                style={{
-                  padding: "8px 16px",
-                  backgroundColor: "#333",
-                  borderRadius: "20px",
-                  fontSize: "1rem", // Smaller font size
-                  color: "#f0f0f0",
-                }}
-              >
-                {feature.trim()}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
-
-      <motion.div
+      <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
+        exit={{ opacity: 0, y: -20 }}
         style={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "2rem",
+          textAlign: "center",
+          padding: "30px 20px",
+          maxWidth: "800px",
+          backgroundColor: "black",
+          color: "#f0f0f0",
+          borderRadius: "12px",
+          boxShadow: "0 0 15px rgba(255, 165, 0, 0.6)",
+          border: "2px solid rgba(255, 165, 0, 0.5)",
         }}
+        aria-labelledby="destination-label"
       >
-        <div style={{ maxWidth: "600px", width: "100%" }}>
+        <h2
+          id="destination-label"
+          style={{
+            fontSize: "2.5rem",
+            fontWeight: "bold",
+            marginBottom: "1.5rem",
+          }}
+        >
+          {destination.title}
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.2rem",
+            lineHeight: "1.6",
+            marginBottom: "2rem",
+          }}
+        >
+          <strong>Description:</strong> {destination.description}
+        </p>
+
+        {featuresList.length > 0 && (
+          <div style={{ fontSize: "1.2rem", marginBottom: "2rem" }}>
+            <strong>Features:</strong>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: "10px 0",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
+              {featuresList.map((feature, index) => (
+                <li
+                  key={index}
+                  style={{
+                    padding: "8px 16px",
+                    backgroundColor: "#333",
+                    borderRadius: "20px",
+                  }}
+                >
+                  {feature.trim()}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div style={{ maxWidth: "600px", margin: "0 auto" }}>
           <img
             src={destination.image}
             alt={destination.title}
@@ -180,67 +159,37 @@ const DestinationDetail = () => {
             }}
             loading="lazy"
           />
-          <p
-            style={{
-              fontSize: "1.2rem", // Smaller font size
-              color: "#f0f0f0",
-              marginTop: "1.5rem",
-              textAlign: "left",
-              padding: "0 20px",
-            }}
-          >
+          <p style={{ fontSize: "1.2rem", marginTop: "1.5rem" }}>
             <strong>Highlights:</strong> {destination.highlights}
           </p>
         </div>
-      </motion.div>
 
-      {destination.best_time_to_visit && (
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          style={{
-            fontSize: "1.2rem", // Smaller font size
-            color: "#f0f0f0",
-            marginBottom: "2rem",
-            marginLeft: "7.5rem",
-            textAlign: "left",
-            padding: "0 20px",
-          }}
-        >
-          <strong>Best Time to Visit:</strong> {destination.best_time_to_visit}
-        </motion.p>
-      )}
+        {destination.best_time_to_visit && (
+          <p style={{ fontSize: "1.2rem", marginBottom: "2rem" }}>
+            <strong>Best Time to Visit:</strong>{" "}
+            {destination.best_time_to_visit}
+          </p>
+        )}
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        style={{ marginTop: "2rem", textAlign: "left", padding: "0 20px" }}
-      >
         <Link
           to="/destinations"
-          className="btn"
           style={{
             display: "inline-flex",
             alignItems: "center",
-            justifyContent: "center", // Center text better
-            padding: "14px 28px", // Slightly larger for better shape
+            justifyContent: "center",
+            padding: "14px 28px",
             fontSize: "1.2rem",
             fontWeight: "bold",
             textDecoration: "none",
-            background: "linear-gradient(45deg, orange, blue, yellow, green)", // Gradient background
+            background: "linear-gradient(45deg, orange, blue, yellow, green)",
             color: "white",
-            borderRadius: "50px", // More rounded shape
-            boxShadow: "0 6px 10px rgba(0, 0, 0, 0.3)", // Slightly deeper shadow for depth
+            borderRadius: "50px",
+            boxShadow: "0 6px 10px rgba(0, 0, 0, 0.3)",
             transition: "transform 0.2s ease, box-shadow 0.2s ease",
-            border: "none", // Remove default border
             cursor: "pointer",
-            marginLeft:"5rem",
+            marginTop: "2rem",
           }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = "#2980b9")}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = "#3498db")}
         >
           <ion-icon
             name="arrow-back"
@@ -249,8 +198,8 @@ const DestinationDetail = () => {
           ></ion-icon>
           Back to Destinations
         </Link>
-      </motion.div>
-    </motion.section>
+      </motion.section>
+    </div>
   );
 };
 

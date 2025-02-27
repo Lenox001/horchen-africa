@@ -112,7 +112,7 @@ const styles = {
     fontFamily: "'Arial', sans-serif",
     textAlign: "left",
     fontSize: "1.2rem",
-    marginTop: "7rem",
+    marginTop: "4rem",
   },
   container: {
     maxWidth: "800px",
