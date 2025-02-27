@@ -33,25 +33,46 @@ const Destinations = () => {
     <section
       className="section collection text-center"
       aria-labelledby="collection-label"
+      style={{
+        backgroundColor: "#121212",
+        color: "#e0e0e0",
+        padding: "20px 0",
+        marginTop:"10rem"
+      }} // Dark theme
     >
       <div className="container" style={{ paddingTop: "20px" }}>
-        <h2 className="h2 section-title" id="collection-label">
+        <h2
+          className="h2 section-title"
+          id="collection-label"
+          style={{ color: "#ffffff" }}
+        >
           Discover Africa’s Finest Safari Destinations
         </h2>
-        <p className="section-text">
+        <p className="section-text" style={{ color: "#e0e0e0" }}>
           From luxurious lodges to thrilling game drives, explore the best
           safari experiences Africa has to offer.
         </p>
 
         <ul className="grid-list">
           {destinations.map((item) => (
-            <li key={item.id || item.slug}>
+            <li
+              key={item.id || item.slug}
+              style={{
+                borderBottom: "2px solid orange",
+                paddingBottom: "20px",
+                marginBottom: "20px",
+              }}
+            >
               {" "}
-              {/* Ensure a unique key */}
+              {/* Orange line below every destination */}
               <div className="collection-card">
                 <figure
                   className="card-banner img-holder"
-                  style={{ "--width": 500, "--height": 550 }}
+                  style={{
+                    "--width": 500,
+                    "--height": 550,
+                    position: "relative",
+                  }}
                 >
                   <img
                     src={item.image}
@@ -60,12 +81,22 @@ const Destinations = () => {
                     loading="lazy"
                     alt={item.title}
                     className="img-cover"
+                    style={{
+                      border: "2px solid #ff9800", // Orange border
+                      borderRadius: "10px", // Rounded corners
+                      boxShadow:
+                        "0 0 15px #ff9800, 0 0 25px #ff9800, 0 0 35px #ff9800", // Orange glowing effect
+                    }}
                   />
                 </figure>
 
                 <div className="card-content">
-                  <h3 className="h3 card-title">{item.title}</h3>
-                  <p className="card-text">{item.highlights}</p>
+                  <h3 className="h3 card-title" style={{ color: "#ffffff" }}>
+                    {item.title}
+                  </h3>
+                  <p className="card-text" style={{ color: "#e0e0e0" }}>
+                    {item.highlights}
+                  </p>
 
                   <Link
                     to={`/destinations/${item.slug}`}
@@ -73,6 +104,11 @@ const Destinations = () => {
                     onClick={() =>
                       window.scrollTo({ top: 0, behavior: "smooth" })
                     }
+                    style={{
+                      backgroundColor: "#333",
+                      color: "#ffffff",
+                      border: "1px solid #555",
+                    }} // Lighter button
                   >
                     <span className="span">More Info</span>
                     <ion-icon
@@ -97,6 +133,11 @@ const Destinations = () => {
             to="/testimonial"
             className="btn"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            style={{
+              backgroundColor: "#333",
+              color: "#ffffff",
+              border: "1px solid #555",
+            }} // Lighter button
           >
             <span className="span">See Reviews</span>
             <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
