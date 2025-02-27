@@ -81,7 +81,7 @@ const Contact = () => {
         style={{
           maxWidth: "600px",
           margin: "0 auto",
-          marginTop: "15rem", // Adjusted margin-top
+          marginTop: "6rem", // Adjusted margin-top
           padding: "20px",
           backgroundColor: "#2a2a2a", // Slightly lighter dark container
           borderRadius: "10px",

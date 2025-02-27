@@ -111,8 +111,8 @@ const styles = {
     color: "#fff",
     fontFamily: "'Arial', sans-serif",
     textAlign: "left",
-    fontSize: "1.2rem",
-    marginTop: "4rem",
+    fontSize: "1.5rem",
+    marginTop: "2rem",
   },
   container: {
     maxWidth: "800px",
@@ -125,7 +125,7 @@ const styles = {
     position: "relative",
     overflow: "hidden",
     marginTop: "11rem",
-    fontSize: "1.2rem",
+    fontSize: "1.5rem",
     textAlign: "left",
     borderLeft: "5px solid #00f",
     animation: "glow 1.5s infinite alternate",
@@ -144,7 +144,7 @@ const styles = {
     textShadow: "0px 0px 10px rgba(255, 138, 0, 0.8)",
   },
   description: {
-    fontSize: "1.5rem",
+    fontSize: "1.8rem",
     lineHeight: "1.6",
     color: "#ddd",
     marginBottom: "2rem",
@@ -216,7 +216,7 @@ const styles = {
     marginTop: "2rem",
   },
   button: {
-    padding: "0.75rem 1.5rem",
+    padding: "1rem 1.5rem",
     background: "linear-gradient(145deg, #ff8a00, #e52e71)",
     color: "#222",
     borderRadius: "8px",

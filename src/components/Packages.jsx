@@ -19,7 +19,7 @@ const Packages = () => {
         backgroundColor: "#000", // Pure black background
         padding: "40px 20px",
         color: "#ffffff",
-        marginTop: "4rem", // Adjusted margin-top
+        marginTop: "3rem", // Adjusted margin-top
         position: "relative",
         overflow: "hidden",
       }}

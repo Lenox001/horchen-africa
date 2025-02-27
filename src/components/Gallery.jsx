@@ -19,7 +19,7 @@ const Gallery = () => {
         padding: "80px 0",
         background: "#1a1a1a",
         color: "#fff",
-        marginTop: "7rem",
+        marginTop: "3rem",
         textAlign: "center",
       }}
     >
