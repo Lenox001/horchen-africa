@@ -1,37 +1,33 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Import images the correct way
-import collection1 from "../assets/images/collection-1.jpg";
-import collection2 from "../assets/images/collection-2.jpg";
-import collection3 from "../assets/images/collection-3.jpg";
+const API_BASE_URL = "https://horchenafrica.pythonanywhere.com/api"; // Update if needed
 
 const Destinations = () => {
-  const collectionItems = [
-    {
-      id: "safari-lodges",
-      imgSrc: collection1,
-      altText: "Safari Lodge Retreat",
-      title: "Luxury Safari Lodges",
-      description:
-        "Immerse yourself in the wild with breathtaking views and world-class comfort in our handpicked lodges.",
-    },
-    {
-      id: "wildlife-safaris",
-      imgSrc: collection2,
-      altText: "Scenic Wildlife Safari",
-      title: "Wildlife Safaris",
-      description:
-        "Embark on thrilling game drives and witness Africa’s iconic wildlife in their natural habitat.",
-    },
-    {
-      id: "bush-camping",
-      imgSrc: collection3,
-      altText: "Bush Camping Experience",
-      title: "Bush Camping",
-      description:
-        "Experience the raw beauty of the African savannah with our fully equipped and guided bush camping adventures.",
-    },
-  ];
+  const [destinations, setDestinations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/destinations/`);
+        if (!response.ok) throw new Error("Failed to fetch destinations");
+
+        const data = await response.json();
+        setDestinations(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDestinations();
+  }, []);
+
+  if (loading) return <h2 className="text-center">Loading...</h2>;
+  if (error) return <h2 className="text-center">{error}</h2>;
 
   return (
     <section
@@ -42,36 +38,37 @@ const Destinations = () => {
         <h2 className="h2 section-title" id="collection-label">
           Discover Africa’s Finest Safari Destinations
         </h2>
-
         <p className="section-text">
           From luxurious lodges to thrilling game drives, explore the best
           safari experiences Africa has to offer.
         </p>
 
         <ul className="grid-list">
-          {collectionItems.map((item, index) => (
-            <li key={index}>
+          {destinations.map((item) => (
+            <li key={item.id || item.slug}>
+              {" "}
+              {/* Ensure a unique key */}
               <div className="collection-card">
                 <figure
                   className="card-banner img-holder"
                   style={{ "--width": 500, "--height": 550 }}
                 >
                   <img
-                    src={item.imgSrc}
+                    src={item.image}
                     width="500"
                     height="550"
                     loading="lazy"
-                    alt={item.altText}
+                    alt={item.title}
                     className="img-cover"
                   />
                 </figure>
 
                 <div className="card-content">
                   <h3 className="h3 card-title">{item.title}</h3>
-                  <p className="card-text">{item.description}</p>
+                  <p className="card-text">{item.highlights}</p>
 
                   <Link
-                    to={`/destinations/${item.id}`}
+                    to={`/destinations/${item.slug}`}
                     className="btn"
                     onClick={() =>
                       window.scrollTo({ top: 0, behavior: "smooth" })

@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+ 
 import { useEffect, useState } from "react";
 import quoteIcon from "../assets/images/quote.svg"; // Import the image
 

@@ -23,11 +23,12 @@ function App() {
           <Route path="/destinations" element={<Destinations />} />
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/destinations/:id" element={<DestinationDetail />} />
+          <Route path="/destinations/:slug" element={<DestinationDetail />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/packages" element={<Packages />} />
-          <Route path="/safari-detail/:id" element={<SafariDetail />} />
+          <Route path="/safari-detail/:slug" element={<SafariDetail />} />
 
           {/* ✅ New Route Added */}
         </Routes>
