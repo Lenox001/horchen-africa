@@ -1469,36 +1469,4 @@ body {
   margin: 0;
   font-size: 1rem;
 }
-/* Contact Section at the Top */
-.contact-top {
-  width: 100%;
-  padding: 20px 0;
-  background-color: #1a1a1a;
-  border-bottom: 2px solid #ffcc00;
-  box-shadow: 0 5px 10px #ffcc00;
-}
 
-.contact-info-section {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 10px;
-}
-
-.contact-info-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #e0e0e0;
-  font-family: "'Poppins', sans-serif";
-}
-
-.contact-info-item ion-icon {
-  font-size: 1.5rem;
-  color: #ffcc00;
-}
-
-.contact-info-item p {
-  margin: 0;
-  font-size: 1rem;
-}
