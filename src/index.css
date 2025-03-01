@@ -1325,3 +1325,212 @@ body {
 .gallery {
   padding-top: 80px; /* Adjust this based on header height */
 }
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+}
+
+.loading-text span {
+  display: inline-block;
+  margin: 0 5px;
+  color: #ffcc00;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(-20px);
+    opacity: 0.5;
+  }
+}
+
+.hero-title, .section-text, .btn {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hero-title:hover, .section-text:hover, .btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+/* Animated Background */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(45deg, #1a1a1a, #ffcc00, #1a1a1a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Text Animations */
+.animate-text {
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Image Floating Animation */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Preloader */
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+}
+
+.loading-text span {
+  display: inline-block;
+  margin: 0 5px;
+  color: #ffcc00;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(-20px);
+    opacity: 0.5;
+  }
+}
+/* Contact Info Section */
+.contact-info-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255, 204, 0, 0.1);
+  border-radius: 10px;
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e0e0e0;
+  font-family: "'Poppins', sans-serif";
+}
+
+.contact-info-item ion-icon {
+  font-size: 1.5rem;
+  color: #ffcc00;
+}
+
+.contact-info-item p {
+  margin: 0;
+  font-size: 1rem;
+}
+/* Contact Section at the Top */
+.contact-top {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #1a1a1a;
+  border-bottom: 2px solid #ffcc00;
+  box-shadow: 0 5px 10px #ffcc00;
+}
+
+.contact-info-section {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 10px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e0e0e0;
+  font-family: "'Poppins', sans-serif";
+}
+
+.contact-info-item ion-icon {
+  font-size: 1.5rem;
+  color: #ffcc00;
+}
+
+.contact-info-item p {
+  margin: 0;
+  font-size: 1rem;
+}
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(-45deg, #1a1a1a, #222, #333, #1a1a1a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 8s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url("../assets/images/stars.png") repeat;
+  animation: moveStars 20s linear infinite;
+}
+
+@keyframes moveStars {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 1000px; }
+}

@@ -18,11 +18,32 @@ const Home = () => {
       .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <div style={{ color: "#fff" }}>Loading...</div>;
+  if (loading)
+    return (
+      <div className="preloader">
+        <div className="loading-text">
+          <span>L</span>
+          <span>O</span>
+          <span>A</span>
+          <span>D</span>
+          <span>I</span>
+          <span>N</span>
+          <span>G</span>
+          <span>.</span>
+          <span>.</span>
+          <span>.</span>
+        </div>
+      </div>
+    );
+
   if (!data) return <div style={{ color: "#fff" }}>Error loading content</div>;
 
   return (
     <>
+      {/* Animated Background */}
+      <div className="animated-background" />
+
+      {/* Hero Section */}
       <section
         className="section hero"
         aria-label="home"
@@ -32,8 +53,11 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <h1
-              className="h1 hero-title"
-              style={{ fontFamily: "'Poppins', sans-serif", color: "yellow" }}
+              className="h1 hero-title animate-text"
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                color: "yellow",
+              }}
             >
               {(() => {
                 const words = data.hero_title.split(" ");
@@ -49,12 +73,15 @@ const Home = () => {
                 );
               })()}
             </h1>
-            <p className="section-text" style={{ color: "#e0e0e0" }}>
+            <p
+              className="section-text animate-text"
+              style={{ color: "#e0e0e0" }}
+            >
               {data.hero_subtitle}
             </p>
             <Link
               to="/packages"
-              className="btn"
+              className="btn animate-text"
               style={{
                 border: "2px solid #ffcc00",
                 boxShadow: "0 0 10px #ffcc00",
@@ -70,7 +97,7 @@ const Home = () => {
           </div>
           <div className="wrapper">
             <div
-              className="hero-banner-1 img-holder"
+              className="hero-banner-1 img-holder animate-float"
               style={{
                 border: "2px solid #ffcc00",
                 boxShadow: "0 0 10px #ffcc00",
@@ -86,7 +113,7 @@ const Home = () => {
               />
             </div>
             <div
-              className="hero-banner-2 img-holder"
+              className="hero-banner-2 img-holder animate-float"
               style={{
                 border: "2px solid #ffcc00",
                 boxShadow: "0 0 10px #ffcc00",
@@ -105,6 +132,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Feature Section */}
       <section
         className="feature"
         aria-label="features"
@@ -124,36 +152,24 @@ const Home = () => {
         <div className="section feature-content">
           <div className="container">
             <h2
-              className="h2 section-title"
+              className="h2 section-title animate-text"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               {data.feature_title}
             </h2>
             {data.extra_paragraph1 && (
-              <p className="section-text" style={{ color: "#e0e0e0" }}>
+              <p
+                className="section-text animate-text"
+                style={{ color: "#e0e0e0" }}
+              >
                 {data.extra_paragraph1}
               </p>
             )}
             <ul className="feature-list">
-              {[
-                {
-                  icon: featureIcon1,
-                  title: data.feature1_title,
-                  description: data.feature1_description,
-                },
-                {
-                  icon: featureIcon2,
-                  title: data.feature2_title,
-                  description: data.feature2_description,
-                },
-                {
-                  icon: featureIcon3,
-                  title: data.feature3_title,
-                  description: data.feature3_description,
-                },
-              ].map((feature, index) => (
+              {[featureIcon1, featureIcon2, featureIcon3].map((icon, index) => (
                 <li
                   key={index}
+                  className="animate-float"
                   style={{
                     borderLeft: "2px solid #ffcc00",
                     boxShadow: "-10px 0 10px #ffcc00",
@@ -165,7 +181,7 @@ const Home = () => {
                   <div className="feature-list-card">
                     <div className="card-icon">
                       <img
-                        src={feature.icon}
+                        src={icon}
                         width="45"
                         height="45"
                         loading="lazy"
@@ -174,16 +190,16 @@ const Home = () => {
                     </div>
                     <div>
                       <h3
-                        className="h4 card-title"
+                        className="h4 card-title animate-text"
                         style={{ fontFamily: "'Poppins', sans-serif" }}
                       >
-                        {feature.title}
+                        {data[`feature${index + 1}_title`]}
                       </h3>
                       <p
-                        className="card-description"
+                        className="card-description animate-text"
                         style={{ color: "#e0e0e0" }}
                       >
-                        {feature.description}
+                        {data[`feature${index + 1}_description`]}
                       </p>
                     </div>
                   </div>
@@ -191,11 +207,54 @@ const Home = () => {
               ))}
             </ul>
             {data.extra_paragraph2 && (
-              <p className="section-text" style={{ color: "#e0e0e0" }}>
+              <p
+                className="section-text animate-text"
+                style={{ color: "#e0e0e0" }}
+              >
                 {data.extra_paragraph2}
               </p>
             )}
           </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section
+        className="contact"
+        aria-label="contact"
+        style={{
+          backgroundColor: "#1a1a1a",
+          color: "#e0e0e0",
+          padding: "40px 0",
+          textAlign: "center",
+          borderTop: "2px solid #ffcc00",
+          boxShadow: "0 -5px 10px #ffcc00",
+        }}
+      >
+        <div className="container">
+          <h2
+            className="h2 section-title animate-text"
+            style={{ fontFamily: "'Poppins', sans-serif", color: "#ffcc00" }}
+          >
+            Contact Us
+          </h2>
+          <p
+            className="section-text animate-text"
+            style={{ fontSize: "1.2rem", color: "#e0e0e0" }}
+          >
+            Have questions? Feel free to reach out!
+          </p>
+          <p
+            className="contact-info animate-text"
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: "bold",
+              color: "#ffcc00",
+              marginTop: "10px",
+            }}
+          >
+            📞 +254 722 233 065
+          </p>
         </div>
       </section>
     </>
