@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import playIcon from "../assets/images/play.svg";
 import featureIcon1 from "../assets/images/feature-icon-1.svg";
 import featureIcon2 from "../assets/images/feature-icon-2.svg";
 import featureIcon3 from "../assets/images/feature-icon-3.svg";
@@ -34,7 +33,7 @@ const Home = () => {
           <div className="hero-content">
             <h1
               className="h1 hero-title"
-              style={{ fontFamily: "'Poppins', sans-serif" ,color:"yellow"}}
+              style={{ fontFamily: "'Poppins', sans-serif", color: "yellow" }}
             >
               {(() => {
                 const words = data.hero_title.split(" ");
@@ -115,24 +114,13 @@ const Home = () => {
           className="feature-banner has-bg-image has-after"
           style={{
             backgroundImage: `url(${data.feature_background})`,
-            borderRadius: "20px", // Rounded borders
-            borderLeft: "2px solid #ffcc00", // Glow on one side (left)
-            boxShadow: "-10px 0 10px #ffcc00", // Glow effect on the left side
-            marginLeft: "30px", // Improved left margin
+            borderRadius: "20px",
+            borderLeft: "2px solid #ffcc00",
+            boxShadow: "-10px 0 10px #ffcc00",
+            marginLeft: "30px",
             marginRight: "30px",
           }}
-        >
-          <button
-            className="play-btn"
-            aria-label="play video: safari experience"
-            style={{
-              border: "2px solid #ffcc00",
-              boxShadow: "0 0 10px #ffcc00",
-            }}
-          >
-            <img src={playIcon} width="60" height="60" alt="play icon" />
-          </button>
-        </div>
+        ></div>
         <div className="section feature-content">
           <div className="container">
             <h2
@@ -167,9 +155,9 @@ const Home = () => {
                 <li
                   key={index}
                   style={{
-                    borderLeft: "2px solid #ffcc00", // Glow on one side (left)
-                    boxShadow: "-10px 0 10px #ffcc00", // Glow effect on the left side
-                    borderRadius: "10px", // Rounded borders
+                    borderLeft: "2px solid #ffcc00",
+                    boxShadow: "-10px 0 10px #ffcc00",
+                    borderRadius: "10px",
                     margin: "10px",
                     padding: "10px",
                   }}
